@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <title>Harmony VRF</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <div id="container">
+    <button onClick="callVrf()">Call VRF Function</button>
+    <div id="displayVrf">-----</div>
+  </div>
+
+  <script src="https://gist.github.com/leon-do/b32abcf60f210bf96fc0045586510df1.js"></script>
+</html>
+
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+<script>
+  const provider = new ethers.providers.JsonRpcProvider("https://api.s0.b.hmny.io");
+  const contractAddress = "0x6b0bc2e986B0e70DB48296619A96E9ac02c5574b";
+  const abi = [{ inputs: [], name: "vrf", outputs: [{ internalType: "bytes32", name: "result", type: "bytes32" }], stateMutability: "view", type: "function" }];
+
+  const contract = new ethers.Contract(contractAddress, abi, provider);
+
+  async function callVrf() {
+    const result = await contract.vrf();
+    document.getElementById("displayVrf").innerHTML = result;
+  }
+</script>
