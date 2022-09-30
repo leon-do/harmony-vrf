@@ -3,12 +3,20 @@
   <title>Harmony VRF</title>
   <link rel="stylesheet" href="style.css" />
 
-  <div id="container">
-    <button onClick="callVrf()">Call VRF Function</button>
-    <div id="displayVrf">-----</div>
+  <div class="container">
+    <div class="vrfContainer">
+      <div>
+        <img id="logo" src="harmony.png" />
+      </div>
+      <h1>Harmony Verifiable Random Function Demo</h1>
+      <button class="vrfButton" onClick="callVrf()">Generate Randomness</button>
+      <div id="vrfDiv">-----</div>
+    </div>
+    <div class="vrfCode">
+      <script src="https://gist.github.com/leon-do/b32abcf60f210bf96fc0045586510df1.js"></script>
+    </div>
+    <a href="https://github.com/leon-do/harmony-vrf">Github</a>
   </div>
-
-  <script src="https://gist.github.com/leon-do/b32abcf60f210bf96fc0045586510df1.js"></script>
 </html>
 
 <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
@@ -21,6 +29,6 @@
 
   async function callVrf() {
     const result = await contract.vrf();
-    document.getElementById("displayVrf").innerHTML = result;
+    document.getElementById("vrfDiv").innerHTML = result;
   }
 </script>
